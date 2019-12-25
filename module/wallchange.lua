@@ -33,7 +33,7 @@ local wall_dir = filesystem.get_configuration_dir() .. 'theme/wallpapers/'
 wallpaper_Day = '0.jpg'
 wallpaper_Noon = '1.jpg'
 wallpaper_Night = '2.jpg'
-wallpaper_Midnight = '3.jpg'
+wallpaper_Midnight = '0.jpg'
 
 --
 -- Time event: midnight, day time, noon time, night time

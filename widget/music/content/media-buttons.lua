@@ -11,9 +11,7 @@ local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/music/icons/'
 
 local mat_list_item = require('widget.material.list-item')
-
 local mpd_updater = require('widget.music.mpd-music-updater')
-
 
 local media_buttons = {}
 
@@ -148,7 +146,10 @@ random_button:buttons(
 navigate_buttons = wibox.widget {
 	expand = 'none',
   layout = wibox.layout.align.horizontal,
-	repeat_button,
+        {
+        layout = wibox.layout.align.horizontal,
+        repeat_button,
+        },
 	{
   	layout = wibox.layout.fixed.horizontal,
   	prev_button,
@@ -156,7 +157,10 @@ navigate_buttons = wibox.widget {
   	next_button,
   	forced_height = dpi(35),
 	},
+	{
+	layout = wibox.layout.align.horizontal,
 	random_button,
+	},
   forced_height = dpi(35),
 }
 

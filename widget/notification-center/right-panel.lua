@@ -106,15 +106,6 @@ local right_panel = function(screen)
     widget = wibox.widget.separator,
   }
 
-  local headerSeparator = wibox.widget {
-    orientation = 'horizontal',
-    forced_height = 15,
-    span_ratio = 1.0,
-    opacity = 0.90,
-    color = beautiful.bg_modal,
-    widget = wibox.widget.separator
-  }
-
   panel:setup {
     expand = 'none',
     layout = wibox.layout.fixed.vertical,
@@ -166,47 +157,59 @@ local right_panel = function(screen)
           layout = wibox.layout.fixed.vertical,
         },
      separator,
-     layout = wibox.layout.fixed.vertical,
-      spacing = dpi(8),
-      {
-        layout = wibox.layout.fixed.vertical,
-        {
-          spacing = dpi(4),
-          layout = wibox.layout.fixed.vertical,
-          {
-            require('widget.music.content.progress-bar'),
-            left = dpi(15),
-            right = dpi(15),
-            widget = wibox.container.margin,
-          },
-          {
-            require('widget.music.content.track-time').time_track,
-            left = dpi(15),
-            right = dpi(15),
-            widget = wibox.container.margin,
-          },
-        },
-        {
-          require('widget.music.content.song-info').music_info,
-          left = dpi(15),
-          right = dpi(15),
-          widget = wibox.container.margin,
-        },
-        {
-          require('widget.music.content.media-buttons').navigate_buttons,
-          left = dpi(15),
-          right = dpi(15),
-          widget = wibox.container.margin,
-        },
-        require('widget.music.content.volume-slider'),
+			-- ## Music box ## --
+		layout = wibox.layout.fixed.vertical,
+		spacing = dpi(8),
+		{
+			layout = wibox.layout.fixed.vertical,
+			{
+			  spacing = dpi(4),
+			  layout = wibox.layout.fixed.vertical,
+			  {
+				require('widget.music.content.progress-bar'),
+				left = dpi(15),
+				right = dpi(15),
+				widget = wibox.container.margin,
+			  },
+			  
+			  {
+				require('widget.music.content.track-time').time_track,
+				left = dpi(15),
+				right = dpi(15),
+				widget = wibox.container.margin,
+			  },
+			},
+			
+			{
+			  require('widget.music.content.song-info').music_info,
+			  left = dpi(15),
+			  right = dpi(15),
+			  widget = wibox.container.margin,
+			},
+			
+
+			{
+			  require('widget.music.content.media-buttons').navigate_buttons,
+			  left = dpi(15),
+			  right = dpi(15),
+			  widget = wibox.container.margin,
+			},
+			
+			{
+		      require('widget.music.content.volume-slider'),
+		      left = dpi(15),
+			  right = dpi(15),
+			  widget = wibox.container.margin,
+			},
+		},
+			-- ## End of music box ## --	
+	require('layout.left-panel.dashboard.quick-settings'),
 	separator,
-      },
 	--
 
 	--
-  	require('layout.left-panel.dashboard.quick-settings'),
         {
-          wibox.container.margin(require('widget.calculator'), dpi(15), dpi(15), dpi(10), dpi(10)),
+          wibox.container.margin(require('widget.calculator'), dpi(15), dpi(15), dpi(0), dpi(0)),
           layout = wibox.layout.fixed.vertical,
         },
 

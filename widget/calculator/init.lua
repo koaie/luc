@@ -36,7 +36,7 @@ end
 local widget_wrapper = function(widget_arg, pos, rad)
   return wibox.widget {
     widget_arg,
-      bg = beautiful.bg_modal_title, --beautiful.modal_bg,
+      bg = beautiful.bg_modal_title,
     shape = gen_shape(pos, rad),
     widget = wibox.container.background
   }
@@ -54,7 +54,7 @@ local calculator_screen = wibox.widget {
     valign = 'center',
     widget = wibox.widget.textbox,
   },
-  margins = dpi(5),
+  margins = dpi(10),
   widget = wibox.container.margin
 }
 
@@ -643,37 +643,11 @@ equals_widget_button:buttons(
 
 
 --##########
--- HEADER
---##########
-
-local calculator_header = wibox.widget {
-  wibox.widget {
-    --text = 'Calculator',
-    font = 'SFNS Display 14',
-    align = 'center',
-    valign = 'center',
-    widget = wibox.widget.textbox,
-  },
-  margins = dpi(10),
-  widget = wibox.container.margin
-}
-
---##########
 -- LAYOUT
 --##########
 
 local calculator_body = wibox.widget {
   layout = wibox.layout.fixed.vertical,
-  {
-    {
-      calculator_header,
-      bg = beautiful.bg_modal_bg,
-      shape = function(cr, width, height)
-        gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, 6) end,
-      widget = wibox.container.background,
-    },
-    layout = wibox.layout.flex.horizontal,
-  },
   {
     layout = wibox.layout.flex.horizontal,
     widget_wrapper(calculator_screen, 'top', 6),
