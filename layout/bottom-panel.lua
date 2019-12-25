@@ -214,7 +214,6 @@ local BotPanel = function(s, offset)
     gears.shape.partially_rounded_rect( cr, width, height, true, true, true, true, 0) end,
     widget = wibox.container.background()
   }
-
   return panel
 end
 

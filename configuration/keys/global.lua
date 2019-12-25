@@ -70,15 +70,6 @@ local globalKeys =
     awful.spawn("flameshot gui")
   end,
   { description = "Fullscreen screenshot", group = "Miscellaneous"}),
-  -- Music Widget
-  --awful.key(
-  -- {modkey}, 'm',
-  --  function()
-  --    if require("widget.music") then
-  --      _G.toggle_player()
-   --   end
-   -- end,
-  --{ description = "Open Music Widget", group = "launcher"}),
 
   -- Toggle System Tray
   awful.key({ 'Control' }, 'Escape', function ()
@@ -175,14 +166,6 @@ local globalKeys =
       awful.spawn(apps.default.lock)
     end
   ),
-  --[[
-  awful.key(
-    {},
-    'Print',
-    function()
-      awful.util.spawn_with_shell('maim -s | xclip -selection clipboard -t image/png')
-    end
-  ),]]
   -- Standard program
   awful.key({modkey, 'Control'}, 'r', _G.awesome.restart, {description = 'reload awesome', group = 'awesome'}),
   awful.key({modkey, 'Control'}, 'q', _G.awesome.quit, {description = 'quit awesome', group = 'awesome'}),
@@ -282,16 +265,6 @@ local globalKeys =
       end
     end,
     {description = 'show filesystem', group = 'widgets'}
-  ),
-  awful.key(
-    {altkey},
-    'w',
-    function()
-      if beautiful.weather then
-        beautiful.weather.show(7)
-      end
-    end,
-    {description = 'show weather', group = 'widgets'}
   ),
   -- Brightness
   awful.key(
