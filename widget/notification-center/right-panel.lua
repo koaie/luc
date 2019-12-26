@@ -11,6 +11,8 @@ local clickable_container = require('widget.material.clickable-container')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/notification-center/icons/'
 local mat_list_item = require('widget.material.list-item')
 
+
+
 panel_visible = false
 
 local right_panel = function(screen)
@@ -196,7 +198,7 @@ local right_panel = function(screen)
 			},
 			
 			{
-		      require('widget.music.content.volume-slider'),
+			  require('widget.music.content.media-buttons').slider,
 		      left = dpi(15),
 			  right = dpi(15),
 			  widget = wibox.container.margin,
