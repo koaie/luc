@@ -216,5 +216,4 @@ mpd_updater.music_prev = music_prev
 mpd_updater.music_rep = music_rep
 mpd_updater.music_rand = music_rand
 mpd_updater.update_all_content = update_all_content
-mpd_updater.volume_setting = volume_setting
 return mpd_updater
