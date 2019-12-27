@@ -86,7 +86,6 @@ This setup is split in multiple parts:
   - `awesome/layout`
 + Client behaviour?
   - `awesome/module/decorate-client.lua`
-  - `awesome/module/titlebar-decorate-client.lua` - for titlebar behaviour. Kinda messy right now
 + Start-up Applications?
   - `awesome/configuration/apps.lua`
 + Keybindings?
