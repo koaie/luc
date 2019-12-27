@@ -55,8 +55,8 @@ If you notice that something is missing, please open an issue so I can add the d
 
 #### Installation
 + My setup is using the dependencies below, you can change stuff as you wise, if you want more minimal setup you are welcome to use the dependencies.
-  - awesome, git master branch (window manager framework)
-  - rofi git branch (application launcher)
+  - awesome (window manager framework)
+  - rofi (application launcher)
   - blueman (bluetooth widgets)
   - xfce4-power-manager (power widget)
   - xbacklight (adjust backlight brightness)
