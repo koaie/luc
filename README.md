@@ -122,4 +122,4 @@ This setup is split in multiple parts:
 
 
 **Special thanks**
-+ [**ilovecookieeee**](https://github.com/ilovecookieeee)
++ [**ilovecookieeee**](https://github.com/ilovecookieee)
