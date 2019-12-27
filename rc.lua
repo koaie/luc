@@ -24,18 +24,16 @@ require('layout')
 require('module.notifications')
 require('module.auto-start')
 require('module.decorate-client')
--- require('module.backdrop')
 require('module.exit-screen')
 require('module.quake-terminal')
 require('module.menu')
 require('module.volume-osd')
 require('module.brightness-osd')
-require('module.wallchange')
-
 -- Setup all configurations
 require('configuration.client')
 require('configuration.tags')
 _G.root.keys(require('configuration.keys.global'))
+
 
 
 screen.connect_signal("request::wallpaper", function(s)

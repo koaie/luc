@@ -31,7 +31,7 @@ local awesome_overrides =
   theme.icons = theme.dir .. '/icons/'
 
   -- Default Wallpaper if Dynamic wallpaper module is not loaded
-  theme.wallpaper = theme.dir .. '/wallpapers/day-wallpaper.jpg'
+  theme.wallpaper = theme.dir .. '/wallpapers/1.jpg'
 
   theme.font = 'SFNS Display Regular 10'
   theme.title_font = 'SFNS Display Bold 14'
