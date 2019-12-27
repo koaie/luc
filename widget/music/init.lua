@@ -10,7 +10,6 @@ local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/music/icons/'
 
 -- Instantiate music box toggle function
 require('widget.music.mpd-music-updater')
---toggle_mbox = require('widget.music.music-box').toggle
 
 local widget = wibox.widget {
   {

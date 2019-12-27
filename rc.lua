@@ -14,6 +14,7 @@ local gears = require('gears')
 local awful = require('awful')
 require('awful.autofocus')
 local beautiful = require('beautiful')
+
 -- Theme
 beautiful.init(require('theme'))
 
@@ -33,7 +34,6 @@ require('module.brightness-osd')
 require('configuration.client')
 require('configuration.tags')
 _G.root.keys(require('configuration.keys.global'))
-
 
 
 screen.connect_signal("request::wallpaper", function(s)
