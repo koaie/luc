@@ -1,6 +1,5 @@
 -- Update Music info using mpd/mpc
 -- Depends mpd, mpc
-
 local gears = require('gears')
 local awful = require('awful')
 
@@ -174,7 +173,7 @@ music_rand = function()
   check_random_status()
 end
 
--- Update time progress every 5 seconds
+-- Update time progress every 1 second
 local update_music_info = gears.timer {
 	timeout = 1.0,
 	autostart = true,
@@ -217,5 +216,5 @@ mpd_updater.music_prev = music_prev
 mpd_updater.music_rep = music_rep
 mpd_updater.music_rand = music_rand
 mpd_updater.update_all_content = update_all_content
-
+mpd_updater.volume_setting = volume_setting
 return mpd_updater

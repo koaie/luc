@@ -152,14 +152,8 @@ xdgmenu = {
 
 
 
-local screenshot = {
-  {"Full", apps.bins.fullShot },
-  {"Area", apps.bins.areaShot },
-}
-
 mymainmenu = awful.menu({
   items = {
-    {"Take a Screenshot", screenshot},
     {"Apps", menu1ddf333c6654f7f89c739dddfb4cc429},
     {"Awesome", myawesomemenu},
     {"End Session", function() _G.exit_screen_show() end},

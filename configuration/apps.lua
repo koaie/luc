@@ -18,18 +18,6 @@ return {
     'xrdb $HOME/.Xresources', -- X Colors
     'nm-applet', -- NetworkManager Applet
     'mpd', -- Music Server
-    'pulseeffects --gapplication-service', -- Equalizer
-    'redshift-gtk -l 14.45:121.05', -- Redshift
-    'xautolock -time 5 -locker "sleep 1 && dm-tool lock & systemctl hibernate" -detectsleep -corners +00-' -- Auto lock
-  },
-
-  -- List of binaries and functions to execute a certain task
-  bins = {
-    fullShot = require('binaries.snap').fullmode,
-    areaShot = require('binaries.snap').areamode,
-    selectShot = require('binaries.snap').selectmode,
-    enableBlur = require('binaries.togglewinfx').enable,
-    disableBlur = require('binaries.togglewinfx').disable,
-    coverUpdate = require('binaries.extractcover').extractalbum
+    'xautolock -time 5 -locker "sleep 1 && dm-tool lock & systemctl hibernate" -detectsleep -corners 0000' -- Auto lock
   }
 }

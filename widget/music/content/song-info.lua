@@ -9,7 +9,7 @@ music_title = wibox.widget {
   {
     id = 'title',
     text = 'Title',
-    font = 'SFNS Display Bold 12',
+    font = 'Musica Regular 14',
     align  = 'center',
     valign = 'center',
     ellipsize = 'end',

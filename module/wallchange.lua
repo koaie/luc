@@ -30,10 +30,10 @@ local wall_dir = filesystem.get_configuration_dir() .. 'theme/wallpapers/'
 -- local wall_dir = os.getenv('HOME') .. 'Pictures/Wallpapers/'
 
 -- Wallpapers filename
-wallpaper_Day = '0.jpg'
+wallpaper_Day = '1.jpg'
 wallpaper_Noon = '1.jpg'
-wallpaper_Night = '2.jpg'
-wallpaper_Midnight = '0.jpg'
+wallpaper_Night = '1.jpg'
+wallpaper_Midnight = '1.jpg'
 
 --
 -- Time event: midnight, day time, noon time, night time
