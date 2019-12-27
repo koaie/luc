@@ -65,6 +65,7 @@ If you notice that something is missing, please open an issue so I can add the d
   - xorg-xwininfo, xprop (custom titlebar)
   - xdg-menu (generates app list)
   - jq (Formatting)
+  - flameshot (screenshots)
 + Copy the files to `$HOME/.config/awesome/`
 + Reload Awesome using `Super + shift + r`
 
