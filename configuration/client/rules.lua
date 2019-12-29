@@ -75,7 +75,8 @@ awful.rules.rules = {
       size_hints_honor = false,
       screen = 1, 
       tag = '1',
-      switchtotag = true,
+      switchtotag = false,
+      round_corners = true,
     }
   },
 
@@ -95,10 +96,14 @@ awful.rules.rules = {
   {
     rule_any = {
       class = {
-        "Geany",
-        "Atom",
-        "Subl3",
-        "code-oss"
+      "Geany",
+      "Atom",
+      "Subl3",
+      "code-oss",
+      "Oomox",
+      "Unity",
+      "UnityHub",
+      "jetbrains-studio"
       },
     },
     properties = { screen = 1, tag = '3' }
@@ -137,10 +142,11 @@ awful.rules.rules = {
     },
   },
     properties = {
+      size_hints_honor = false,
       screen = 1,
       tag = '6',
       switchtotag = true,
-      floating = true
+      floating = false
     }
   },
 
@@ -154,17 +160,6 @@ awful.rules.rules = {
     },
   },
     properties = { screen = 1, tag = '7'}
-  },
-
-  -- Virtualbox
-  {
-  rule_any = {
-    class = {
-      "VirtualBox Manage",
-      "VirtualBox Machine"
-    },
-  },
-    properties = { screen = 1, tag = '8'}
   },
 
 
@@ -197,10 +192,11 @@ awful.rules.rules = {
     },
   },
     properties = {
+    round_corners = true,
     skip_decoration = true,
-    floating = true,
-    ontop = true,
-    placement = awful.placement.centered
+    --floating = true,
+    --ontop = true,
+    --placement = awful.placement.centered
     }
   },
 
