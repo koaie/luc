@@ -22,6 +22,7 @@ local right_panel = function(screen)
     screen = screen,
     width = panel_width,
     height = screen.geometry.height,
+    opacity = 1.0,
     x = screen.geometry.width - panel_width,
     bg = beautiful.background.hue_900,
     fg = beautiful.fg_normal,
