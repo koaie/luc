@@ -1,4 +1,4 @@
-local tit_dir = os.getenv('HOME') .. '/.config/awesome/theme/icons/tag-list/tag/'
+local tit_dir = os.getenv('HOME') .. '/.config/awesome/theme/icons/tag-list/'
 local dir = os.getenv('HOME') .. '/.config/awesome/theme/icons'
 
 
