@@ -29,8 +29,6 @@ local notif_button = clickable_container(wibox.container.margin(notif_text, dpi(
 local wrap_notif = wibox.widget {
   notif_button,
   forced_width = dpi(140),
-  border_width = dpi(1),
-  border_color = '#ffffff40',
   bg = active_button,
   shape = function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, beautiful.modal_radius) end,
   widget = wibox.container.background
@@ -51,8 +49,6 @@ local widgets_button = clickable_container(wibox.container.margin(widgets_text, 
 local wrap_widget = wibox.widget {
   widgets_button,
   forced_width = dpi(140),
-  border_width = dpi(1),
-  border_color = '#ffffff40',
   bg = inactive_button,
   shape = function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, false, true, true, false, beautiful.modal_radius) end,
   widget = wibox.container.background

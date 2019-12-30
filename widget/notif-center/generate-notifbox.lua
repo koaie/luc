@@ -153,8 +153,6 @@ local notifbox_empty = function()
       margins = dpi(20),
       widget = wibox.container.margin
     },
-    border_width = dpi(1),
-    border_color = '#ffffff40',
     bg = beautiful.bg_modal,
     shape = function(cr, width, height)
       gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.modal_radius) end,
