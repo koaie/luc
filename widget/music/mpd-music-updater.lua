@@ -72,8 +72,9 @@ update_time_duration = function()
 end
 
 update_file = function()
-	-- Update title
+	-- Update file
 	awful.spawn.easy_async_with_shell('mpc -f %file% current', function( stdout )
+	-- Remove new lines
 	file = stdout:gsub('%\n','')
 	end)
 	return file
@@ -88,17 +89,17 @@ update_title = function()
     local title = stdout:gsub('%\n','')
     -- Check if there's alphanumeric characters
 		if (stdout:match("%W")) then
-      -- Truncate string
-      if(title:len() > 1) then
-        title = title:sub(1,26) .. ''
-        song_info.music_title.title:set_text(title)
-	    song_info.music_artist.artist:set_text(" ")
-	    else
-	    file = file:sub(1, title:len() - 4) .. ''
-	    file = file:sub(1,26) .. ''
-	    song_info.music_title.title:set_text(file)
-	    song_info.music_artist.artist:set_text(" ")
-      end
+		  -- Truncate string
+		  if(title:len() > 1) then
+			title = title:sub(1,26) .. ''
+			song_info.music_title.title:set_text(title)
+			song_info.music_artist.artist:set_text(" ")
+			else
+			file = file:sub(1, title:len() - 5) .. ''
+			file = file:sub(1,26) .. ''
+			song_info.music_title.title:set_text(file)
+			song_info.music_artist.artist:set_text(" ")
+		  end
 		else
 			song_info.music_title.title:set_text(" ")
 			song_info.music_artist.artist:set_text(" ")
