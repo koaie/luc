@@ -100,8 +100,6 @@ local notifbox_actions = function(notif)
 
         bg                 = beautiful.bg_modal,
         shape              = gears.shape.rounded_rect,
-        border_width       = dpi(1),
-        border_color       = '#ffffff40',
         forced_height      = 30,
         widget             = wibox.container.background,
       },
@@ -249,8 +247,6 @@ local notifbox_box = function(icon, title, message, notif)
       margins = dpi(10),
       widget = wibox.container.margin
     },
-    border_width = dpi(1),
-    border_color = '#ffffff40',
     bg = beautiful.bg_modal,
     shape = function(cr, width, height)
       gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.modal_radius) end,

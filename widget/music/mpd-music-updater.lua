@@ -1,5 +1,6 @@
 -- Update Music info using mpd/mpc
 -- Depends mpd, mpc
+
 local gears = require('gears')
 local awful = require('awful')
 

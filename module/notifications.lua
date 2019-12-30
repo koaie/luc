@@ -240,7 +240,7 @@ naughty.connect_signal("request::display", function(n)
     naughty.destroy_all_notifications()
   else
     -- Add sound fx on notif
-    awful.spawn('canberra-gtk-play -i message', false)
+    awful.spawn('play /usr/share/sounds/freedesktop/stereo/message.oga', false)
   end
 
 end)
