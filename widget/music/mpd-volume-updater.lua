@@ -20,7 +20,7 @@ musicSlider:connect_signal(
 )
 
 watch(
-  [[bash -c "mpc"]],
+  [[bash -c "mpc volume"]],
   2,
   function(_, stdout)
     local volume = string.match(stdout, 'volume: (%d+)')
