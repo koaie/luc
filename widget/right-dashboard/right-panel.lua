@@ -200,10 +200,11 @@ local right_panel = function(screen)
 			
 			{
 			  require('widget.music.content.media-buttons').slider,
-		      left = dpi(15),
+		          left = dpi(15),
 			  right = dpi(15),
 			  widget = wibox.container.margin,
 			},
+
 		},
 			-- ## End of music box ## --	
 	require('layout.left-panel.dashboard.quick-settings'),

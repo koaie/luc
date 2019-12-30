@@ -161,21 +161,23 @@ random_button:buttons(
 
 navigate_buttons = wibox.widget {
 	expand = 'none',
-  layout = wibox.layout.align.horizontal,
-    {
-    layout = wibox.layout.align.horizontal,
-    repeat_button,
-    },
-	{
-  	layout = wibox.layout.fixed.horizontal,
-  	prev_button,
-  	play_button,
-  	next_button,
-  	forced_height = dpi(35),
-	},
-	{
 	layout = wibox.layout.align.horizontal,
-	random_button,
+	{
+	   layout = wibox.layout.align.horizontal,
+	   repeat_button,
+	},
+
+	{
+  	  layout = wibox.layout.fixed.horizontal,
+  	  prev_button,
+  	  play_button,
+  	  next_button,
+  	  forced_height = dpi(35),
+	},
+
+	{
+	  layout = wibox.layout.align.horizontal,
+	  random_button,
 	},
   forced_height = dpi(35),
 }

@@ -40,8 +40,9 @@ end
 local notifbox_title = function(title)
   return wibox.widget {
     text   = title,
-    font   = 'SFNS Display Bold 12',
+    font   = 'Musica regular 14',
     align  = 'left',
+    bg                 = beautiful.bg_modal,
     valign = 'center',
     widget = wibox.widget.textbox
   }
@@ -51,8 +52,9 @@ end
 local notifbox_message = function(msg)
   return wibox.widget {
     text   = msg,
-    font   = 'SFNS Display Regular 12',
+    font   = 'Musica Regular 12',
     align  = 'left',
+    bg                 = beautiful.bg_modal,
     valign = 'center',
     widget = wibox.widget.textbox
   }
@@ -129,6 +131,7 @@ local notifbox_empty = function()
             resize = true,
             forced_height = dpi(35),
             forced_width = dpi(35),
+	    bg                 = beautiful.bg_modal,
             widget = wibox.widget.imagebox,
           },
           nil
@@ -149,6 +152,7 @@ local notifbox_empty = function()
         },
       },
       margins = dpi(20),
+      bg                 = beautiful.bg_modal,
       widget = wibox.container.margin
     },
     bg = beautiful.bg_modal,
