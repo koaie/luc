@@ -18,6 +18,6 @@ return {
     'xrdb $HOME/.Xresources', -- X Colors
     'nm-applet', -- NetworkManager Applet
     'mpd', -- Music Server
-    'xautolock -time 5 -locker "sleep 1 & dm-tool lock" -killtime 10 -killer "systemctl hibernate" -detectsleep -cornersize 20 -corners ---- -notify 5 -bell 60' -- Auto lock
+    'xautolock -time 5 -locker "sleep 1 & dm-tool lock" -detectsleep' -- Auto lock
   }
 }

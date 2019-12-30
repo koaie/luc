@@ -2,7 +2,7 @@ local awful = require('awful')
 local wibox = require('wibox')
 local gears = require('gears')
 
-local right_panel = require('widget.notification-center.right-panel')
+local right_panel = require('widget.right-dashboard.right-panel')
 
 -- Create a wibox for each screen connected
 screen.connect_signal("request::desktop_decoration", function(s)

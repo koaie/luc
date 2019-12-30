@@ -15,20 +15,20 @@ local globalKeys =
   awful.key(
     {"Control", "Mod1"}, 't',
     function()
-      awful.spawn("konsole")
+      awful.spawn(apps.default.terminal)
     end,
     { description = "Open Terminal", group = "launcher"}),
   awful.key(
     {modkey}, 'e',
     function()
       awful.util.spawn(apps.default.rofiappmenu)
-      _G.screen.primary.right_panel:HideDashboard()	
+      _G.screen.primary.right_panel:HideDashboard()
     end,
   { description = "Open Application Drawer", group = "launcher"}),
   awful.key(
     {modkey}, 'x',
     function()
-      if require('widget.notification-center') then
+      if require('widget.right-dashboard') then
         _G.screen.primary.right_panel:toggle()
       end
     end,

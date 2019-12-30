@@ -203,7 +203,7 @@ local BotPanel = function(s, offset)
           layout = wibox.layout.fixed.horizontal,
           decorateWidget(require('widget.systemtray')),
         },
-	decorateWidget(require('widget.notification-center')),
+        decorateWidget(require('widget.right-dashboard')),
 	decorateWidget(wibox.container.margin(clock_widget, dpi(10), dpi(10))),
       },
     },

@@ -8,7 +8,7 @@ local HOME = os.getenv('HOME')
 local apps = require('configuration.apps')
 local dpi = require('beautiful').xresources.apply_dpi
 local clickable_container = require('widget.material.clickable-container')
-local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/notification-center/icons/'
+local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/right-dashboard/icons/'
 local mat_list_item = require('widget.material.list-item')
 
 
@@ -120,7 +120,7 @@ local right_panel = function(screen)
         nil,
         layout = wibox.layout.fixed.horizontal,
       },
-      require('widget.notification-center.subwidgets.panel-mode-switcher'),
+      require('widget.right-dashboard.subwidgets.panel-mode-switcher'),
       {
         nil,
         layout = wibox.layout.fixed.horizontal,
@@ -134,14 +134,14 @@ local right_panel = function(screen)
         id = 'notif_id',
         visible = true,
         separator,
-        require('widget.notification-center.subwidgets.dont-disturb'),
-        separator,
-        require('widget.notification-center.subwidgets.clear-all'),
-
         {
-          require('widget.notification-center.subwidgets.notif-generate'),
-          margins = dpi(15),
-          widget = wibox.container.margin,
+          {
+            layout = wibox.layout.fixed.vertical,
+            require('widget.notif-center'),
+          },
+          left = dpi(15),
+          right = dpi(15),
+          widget = wibox.container.margin
         },
         layout = wibox.layout.fixed.vertical,
       },
