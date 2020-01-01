@@ -14,7 +14,6 @@
 + **Editor**: geany, nano
 + **Browser**: firefox
 + **Music Player**: ncmpcpp, mpd, mpc
-+ **Display Manager**: lightdm
 + **Setup font**: SFNS Display, Hack, Musica
 
 ## FEATURES!
