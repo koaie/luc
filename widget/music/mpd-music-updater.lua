@@ -122,7 +122,6 @@ end
 
 
 
-
 update_all_content = function()
 
 	-- Update progress bar
@@ -147,7 +146,7 @@ end
 check_if_playing = function()
   awful.spawn.easy_async_with_shell("mpc status | awk 'NR==2' | grep -o playing", function( stdout )
     if (stdout:match("%W")) then
-      require('widget.music.content.media-buttons').play_button_image.play:set_image(gears.surface.load_uncached(PATH_TO_ICONS .. 'pause.svg'))
+      require('widget.music.content.media-buttons').play_button_image.play:set_image(gears.surface.load_uncached(PATH_TO_ICONS .. 'pause.svg'))      
     else
       require('widget.music.content.media-buttons').play_button_image.play:set_image(gears.surface.load_uncached(PATH_TO_ICONS .. 'play.svg'))
     end

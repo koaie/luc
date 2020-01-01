@@ -168,11 +168,28 @@ local right_panel = function(screen)
 								},
 								require('widget.music.content.song-info').music_info,
 								require('widget.music.content.media-buttons').navigate_buttons,
-								require('widget.music.content.media-buttons').slider,
 							},
-							-- ## End of music box ## --	
-							require('layout.left-panel.dashboard.quick-settings'),
-							require('widget.calculator')
+						},
+						left = dpi(15),
+						right = dpi(15),
+						widget = wibox.container.margin
+					},
+					{
+						{
+						layout = wibox.layout.fixed.vertical,
+						require('widget.music.content.media-buttons').slider,
+						-- ## End of music box ## --
+						require('layout.left-panel.dashboard.quick-settings'),
+						},
+						left = dpi(0),
+						right = dpi(0),
+						widget = wibox.container.margin
+					},
+					separator,
+					{
+						{
+						layout = wibox.layout.fixed.vertical,
+					    require('widget.calculator')
 						},
 						left = dpi(15),
 						right = dpi(15),
