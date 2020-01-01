@@ -6,6 +6,8 @@ local watch = require('awful.widget.watch')
 local spawn = require('awful.spawn')
 local awful = require('awful')
 
+local stringMatch = string.match
+
 local musicSlider =
   wibox.widget {
   read_only = false,
@@ -23,9 +25,9 @@ watch(
   [[bash -c "mpc volume"]],
   2,
   function(_, stdout)
-    local volume = string.match(stdout, 'volume: (%d+)')
+    local volume = stringMatch(stdout, 'volume: (%d+)')
     musicSlider:set_value(tonumber(volume))
-    collectgarbage('collect')
+    --collectgarbage('collect')
   end
 )
 

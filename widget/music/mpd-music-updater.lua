@@ -100,11 +100,14 @@ update_title = function()
 			else
 				-- Define file into a variable
 				local file = update_file()
-				-- Cut the .mp3 ending
-				file = file:sub(1, title:len() - 5) .. ''
-				-- Trim file to 26 characters
-				file = file:sub(1,26) .. ''
-				-- Set title and artist
+				local titleLen = file:len()
+                                -- Cut the .mp3 ending and trim to 26 characters
+                                if (titleLen < 31) then
+                                   file = file:sub(1, titleLen - 5)
+                                   else
+                                   file = file:sub(1, 26)
+                                end
+				-- Set title and artist				
 				song_info.music_title.title:set_text(file)
 				song_info.music_artist.artist:set_text(" ")
 		  end

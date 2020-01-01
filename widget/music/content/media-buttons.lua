@@ -15,6 +15,7 @@ local mat_list_sep = require('widget.material.list-item-separator')
 local musicSlider = require('widget.music.mpd-volume-updater')
 local mpd_updater = require('widget.music.mpd-music-updater')
 
+
 local media_buttons = {}
 
 play_button_image = wibox.widget {
