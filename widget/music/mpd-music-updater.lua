@@ -71,6 +71,16 @@ update_time_duration = function()
 		end
 	end)
 end
+update_artist = function()
+        -- Save the output of "mpc -f %file% current" into a variable after new lines removal
+        -- Update file
+        awful.spawn.easy_async_with_shell('mpc -f %artist% current', function( stdout )
+        -- Remove new lines
+        artist = stdout:gsub('%\n','')
+        end)
+        -- Return the variable
+        return artist
+end
 
 update_file = function()
 	-- Save the output of "mpc -f %file% current" into a variable after new lines removal
@@ -96,14 +106,14 @@ update_title = function()
 				title = title:sub(1,26) .. ''
 				-- Set title and artist
 				song_info.music_title.title:set_text(title)
-				song_info.music_artist.artist:set_text(" ")
+				song_info.music_artist.artist:set_text(update_artist())
 			else
 				-- Define file into a variable
 				local file = update_file()
 				local titleLen = file:len()
                                 -- Cut the .mp3 ending and trim to 26 characters
                                 if (titleLen < 31) then
-                                   file = file:sub(1, titleLen - 5)
+                                   file = file:sub(1, titleLen - 4)
                                    else
                                    file = file:sub(1, 26)
                                 end

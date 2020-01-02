@@ -23,7 +23,7 @@ music_artist = wibox.widget {
   {
     id = 'artist',
     text = 'Artist',
-    font = 'SFNS Display 9',
+    font = 'Musica Regular 11',
     align  = 'center',
     valign = 'center',
     widget = wibox.widget.textbox
