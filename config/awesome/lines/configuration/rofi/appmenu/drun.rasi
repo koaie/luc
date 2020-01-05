@@ -1,13 +1,14 @@
 configuration {
   show-icons:                     true;
+  fullscreen:                     false;
   icon-theme:                     "korla";
-  font:                           "Neue Haas Unica Pro Bold 9";
+  font:                           "Neue Haas Unica Pro Bold 14";
   drun-display-format:            "{name}";
 }
 
 * {
   background-color:               transparent;
-  background:                     #00000033;
+  background:                     #00000066;
   background-alt:                 #f2f2f233;
   text-color:                     #D8DEE9;
   selected-text-color:            #ffffff;
@@ -16,17 +17,11 @@ configuration {
 }
 
 window {
-  border:                         1px;
-  border-color:                   #ffffff50;
   transparency:                   "real";
   background-color:               @background;
-  height:                         540px;
-  width:                          506px;
-  location:                       northwest;
-  anchor:                         northwest;
-  x-offset:                       0;
-  y-offset:                       186;
-  border-radius:                  12px 12px 0px 0px;
+  height:                         710px;
+  width:                          1356px;
+  border-radius:                  6;
 }
 
 prompt {
@@ -34,32 +29,45 @@ prompt {
 }
 
 
-listview {
-  columns: 4;
-  spacing: 2;
-  dynamic: false;
-  padding: 0 0 0 0;
+inputbar {
+  expand:                         false;
+  background-color:               #00000020;
+  border-radius:                  6;
+  margin:                         40px 360px 20px 360px;
+  padding:                        10px 10px 10px 10px;
+  position:                       north;
+  width:                          1px;
 }
 
-element {
-  border-radius: 4;
-  orientation: vertical;
-  padding: 20 0 20 0;
-}
 entry {
-/*  expand:                         false;
+  /*expand:                         false;
   width:                          20em;
+  margin:                         40px -275px 20px 355px;
   border-radius:                  6;
   padding:                        10px 10px 10px 10px;
-  background-color:               #ffffff20;
+  background-color:               #00000020;
   border:                         0px 0px solid 0px 0px;
   border-color:                   @text-color;
   font:                           "SFNS Display 10";*/
 }
 
+
+listview {
+  columns: 3;
+  spacing: 3;
+  dynamic: false;
+}
+
+element {
+  border-radius: 4;
+  orientation: vertical;
+  padding: 30 0 30 0;
+}
+
+
 mainbox {
-  children: [ listview, inputbar ];
-  padding: 20px 20px 20px 20px;
+  children: [ inputbar, listview ];
+  padding: 10px 160px 10px 160px;
 }
 
 element normal.urgent, element alternate.urgent {
@@ -72,8 +80,6 @@ element normal.active, element alternate.active {
 }
 
 element selected {
-    border:                         1px;
-    border-color:                   #ffffff50;
     background-color:               @background-alt;
     color:                          @selected-text-color;
     border-radius:                  6;
@@ -96,15 +102,5 @@ element-icon {
 element-text {
     expand:                         true;
     horizontal-align:               0.5;
-    margin:                         0 15px 0px 15px;
-}
-
-
-inputbar {
-  background-color: #ffffff20;
-  border-radius: 4;
-  margin: 0 0;
-  padding: 10 10;
-  position: south;
-  width: 200;
+    margin:                         10px 15px 0px 15px;
 }

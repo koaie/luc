@@ -45,7 +45,6 @@ _G.client.connect_signal(
       quake_client = c
       c.opacity = 0.9
       c.floating = true
-      c.skip_taskbar = true
       c.ontop = true
       c.above = true
       c.sticky = true

@@ -1,15 +1,3 @@
---[[
-___       ___       ___       ___       ___       ___       ___
-/\  \     /\__\     /\  \     /\  \     /\  \     /\__\     /\  \
-/::\  \   /:/\__\   /::\  \   /::\  \   /::\  \   /::L_L_   /::\  \
-/::\:\__\ /:/:/\__\ /::\:\__\ /\:\:\__\ /:/\:\__\ /:/L:\__\ /::\:\__\
-\/\::/  / \::/:/  / \:\:\/  / \:\:\/__/ \:\/:/  / \/_/:/  / \:\:\/  /
-/:/  /   \::/  /   \:\/  /   \::/  /   \::/  /    /:/  /   \:\/  /
-\/__/     \/__/     \/__/     \/__/     \/__/     \/__/     \/__/
---]]
-
-
-
 local gears = require('gears')
 local awful = require('awful')
 require('awful.autofocus')
@@ -25,16 +13,11 @@ require('layout')
 require('module.notifications')
 require('module.auto-start')
 require('module.decorate-client')
--- require('module.backdrop')
 require('module.exit-screen')
 require('module.quake-terminal')
-require('module.titlebar')
 require('module.menu')
 require('module.volume-osd')
 require('module.brightness-osd')
-require('module.wallchange')
-require('module.battery')
-
 -- Setup all configurations
 require('configuration.client')
 require('configuration.tags')

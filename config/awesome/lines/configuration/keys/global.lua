@@ -2,7 +2,7 @@ local awful = require('awful')
 require('awful.autofocus')
 local beautiful = require('beautiful')
 local hotkeys_popup = require('awful.hotkeys_popup').widget
-
+--local xrandr = require("xrandr")
 local modkey = require('configuration.keys.mod').modKey
 local altkey = require('configuration.keys.mod').altKey
 local apps = require('configuration.apps')
@@ -11,9 +11,9 @@ local globalKeys =
   awful.util.table.join(
   -- Hotkeys
   awful.key({modkey}, 'F1', hotkeys_popup.show_help, {description = 'show help', group = 'awesome'}),
-  -- Custom Keys
+ -- Custom Keys
   awful.key(
-    {modkey}, 'Return',
+    {"Control", "Mod1"}, 't',
     function()
       awful.spawn(apps.default.terminal)
     end,
@@ -28,20 +28,29 @@ local globalKeys =
   awful.key(
     {modkey}, 'x',
     function()
-      if require('widget.notification-center') then
+      if require('widget.right-dashboard') then
         _G.screen.primary.right_panel:toggle()
       end
     end,
   { description = "Open Notification Center", group = "launcher"}),
+
   awful.key(
-    {modkey, "Shift"}, 'f',
+	{modkey}, 'F2',
+	function()
+	awful.spawn("arandr")
+	end,
+	{description = 'Display settings', group = 'awesome'}),
+
+
+  awful.key(
+    {"Control"}, '1',
     function()
       awful.spawn("firefox")
     end,
     { description = "Open Browser", group = "launcher"}),
 
   awful.key(
-    {modkey, "Shift"}, 'e',
+    {"Control"}, '2',
     function()
       awful.spawn("nemo")
     end,
@@ -50,7 +59,7 @@ local globalKeys =
   awful.key(
     {"Control", "Shift"}, 'Escape',
     function()
-      awful.spawn("gnome-system-monitor")
+      awful.spawn("xfce4-taskmanager")
     end,
     { description = "Open system monitor", group = "launcher"}),
 
@@ -58,31 +67,9 @@ local globalKeys =
   awful.key(
   { }, "Print",
   function ()
-    apps.bins.fullShot()
+    awful.spawn("xfce4-screenshooter -r -i")
   end,
   { description = "Fullscreen screenshot", group = "Miscellaneous"}),
-  awful.key(
-  {modkey, "Shift"}, 's',
-  function ()
-    apps.bins.areaShot()
-  end,
-  { description = "Area screenshot", group = "Miscellaneous"}),
-  awful.key(
-  {modkey, altkey}, 's',
-  function ()
-    apps.bins.areaShot()
-  end,
-  { description = "Selected screenshot", group = "Miscellaneous"}),
-
-  -- Music Widget
-  awful.key(
-    {modkey}, 'm',
-    function()
-      if require("widget.music") then
-        _G.toggle_player()
-      end
-    end,
-  { description = "Open Music Widget", group = "launcher"}),
 
   -- Toggle System Tray
   awful.key({ 'Control' }, 'Escape', function ()
@@ -90,8 +77,8 @@ local globalKeys =
   end, {description = "Toggle systray visibility", group = "Miscellaneous"}),
 
   -- Tag browsing
-  awful.key({modkey}, 'w', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
-  awful.key({modkey}, 's', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
+  awful.key({modkey}, 's', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
+  awful.key({modkey}, 'w', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
   awful.key({modkey}, 'Escape', awful.tag.history.restore, {description = 'go back', group = 'tag'}),
 
   -- Non-empty tag browsing
@@ -155,7 +142,7 @@ local globalKeys =
     {modkey},
     'r',
     function()
-      _G.mini_sett_toggle()
+	_G.screen.primary.right_panel:toggle()
     end,
     {description = 'Open Sidebar', group = 'launcher'}
   ),
@@ -179,14 +166,6 @@ local globalKeys =
       awful.spawn(apps.default.lock)
     end
   ),
-  --[[
-  awful.key(
-    {},
-    'Print',
-    function()
-      awful.util.spawn_with_shell('maim -s | xclip -selection clipboard -t image/png')
-    end
-  ),]]
   -- Standard program
   awful.key({modkey, 'Control'}, 'r', _G.awesome.restart, {description = 'reload awesome', group = 'awesome'}),
   awful.key({modkey, 'Control'}, 'q', _G.awesome.quit, {description = 'quit awesome', group = 'awesome'}),
@@ -286,16 +265,6 @@ local globalKeys =
       end
     end,
     {description = 'show filesystem', group = 'widgets'}
-  ),
-  awful.key(
-    {altkey},
-    'w',
-    function()
-      if beautiful.weather then
-        beautiful.weather.show(7)
-      end
-    end,
-    {description = 'show weather', group = 'widgets'}
   ),
   -- Brightness
   awful.key(
@@ -405,8 +374,8 @@ local globalKeys =
     {description = 'toggle mute', group = 'hotkeys'}
   ),
   awful.key(
-    {},
-    'XF86PowerOff',
+    {modkey},
+    'q',
     function()
       _G.exit_screen_show()
     end,

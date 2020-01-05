@@ -28,7 +28,6 @@ weather_icon_widget = wibox.widget {
 }
 
 weather_header = wibox.widget {
-  text   = "Weather & Temperature",
   font   = 'SFNS Display Regular 14',
   align  = 'center',
   valign = 'center',
@@ -67,8 +66,6 @@ local weather_report =  wibox.widget {
   {
     wibox.widget {
       wibox.container.margin(weather_header, dpi(10), dpi(10), dpi(10), dpi(10)),
-      border_width = dpi(1),
-      border_color = '#ffffff40',
       bg = beautiful.modal_bg,
       shape = function(cr, width, height)
       gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, 6) end,
@@ -100,8 +97,6 @@ local weather_report =  wibox.widget {
         widget = wibox.container.margin
       },
     },
-    border_width = dpi(1),
-    border_color = '#ffffff40',
     bg = beautiful.modal_bg,
     shape = function(cr, width, height)
     gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, 6) end,

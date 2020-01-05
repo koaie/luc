@@ -1,14 +1,16 @@
 local awful = require('awful')
 local gears = require('gears')
 local icons = require('theme.icons')
+local apps = require('configuration.apps')
 
 local tags = {
   {
     icon = icons.terminal,
     type = 'terminal',
-    defaultApp = 'kitty',
+    defaultApp = 'konsole',
     screen = 1
   },
+
   {
     icon = icons.chrome,
     type = 'chrome',
@@ -18,7 +20,7 @@ local tags = {
   {
     icon = icons.code,
     type = 'code',
-    defaultApp = 'atom',
+    defaultApp = 'geany',
     screen = 1
   },
  --[[ {
@@ -36,31 +38,13 @@ local tags = {
   {
     icon = icons.music,
     type = 'music',
-    defaultApp = 'kitty -e ncmpcpp',
-    screen = 1
-  },
-  {
-    icon = icons.game,
-    type = 'game',
-    defaultApp = 'supertuxkart',
-    screen = 1
-  },
-  {
-    icon = icons.art,
-    type = 'art',
-    defaultApp = 'gimp',
-    screen = 1
-  },
-  {
-    icon = icons.vbox,
-    type = 'virtualbox',
-    defaultApp = 'virtualbox',
+    defaultApp = 'konsole --profile ncmpcpp -e ncmpcpp',
     screen = 1
   },
   {
     icon = icons.lab,
     type = 'any',
-    defaultApp = '',
+    defaultApp = apps.default.rofiappmenu,
     screen = 1
   }
 }

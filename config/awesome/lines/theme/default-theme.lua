@@ -31,7 +31,7 @@ local awesome_overrides =
   theme.icons = theme.dir .. '/icons/'
 
   -- Default Wallpaper if Dynamic wallpaper module is not loaded
-  theme.wallpaper = theme.dir .. '/wallpapers/day-wallpaper.jpg'
+  theme.wallpaper = theme.dir .. '/wallpapers/1.jpg'
 
   theme.font = 'SFNS Display Regular 10'
   theme.title_font = 'SFNS Display Bold 14'
@@ -46,15 +46,6 @@ local awesome_overrides =
   theme.bg_focus = '#5a5a5a'
   theme.bg_urgent = '#3F3F3F'
   theme.bg_systray = theme.background.hue_800
-
-  -- Titlebar
-  
-  theme.titlebars_enabled = true
-  theme.titlebar_size = dpi(32)
-  theme.titlebar_bg_focus = beautiful.gtk.get_theme_variables().bg_color
-  theme.titlebar_bg_normal = beautiful.gtk.get_theme_variables().base_color
-  theme.titlebar_fg_focus = beautiful.gtk.get_theme_variables().fg_color .. '00'
-  theme.titlebar_fg_normal = beautiful.gtk.get_theme_variables().fg_color .. '00'
 
   -- Modals
 

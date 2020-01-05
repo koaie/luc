@@ -11,7 +11,8 @@ local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/music/icons/'
 
 local mat_list_item = require('widget.material.list-item')
-
+local mat_list_sep = require('widget.material.list-item-separator')
+local musicSlider = require('widget.music.mpd-volume-updater')
 local mpd_updater = require('widget.music.mpd-music-updater')
 
 
@@ -36,6 +37,20 @@ local next_button_image = wibox.widget {
     widget = wibox.widget.imagebox
   },
   layout = wibox.layout.align.horizontal
+}
+
+music_slider = wibox.widget {
+  layout = wibox.layout.fixed.vertical,
+  {
+    layout = wibox.layout.fixed.vertical,
+    {
+      {
+        musicSlider,
+        widget = wibox.container.background
+      },
+      widget = mat_list_item
+    }
+  }
 }
 
 
@@ -147,16 +162,24 @@ random_button:buttons(
 
 navigate_buttons = wibox.widget {
 	expand = 'none',
-  layout = wibox.layout.align.horizontal,
-	repeat_button,
+	layout = wibox.layout.align.horizontal,
 	{
-  	layout = wibox.layout.fixed.horizontal,
-  	prev_button,
-  	play_button,
-  	next_button,
-  	forced_height = dpi(35),
+	   layout = wibox.layout.align.horizontal,
+	   repeat_button,
 	},
-	random_button,
+
+	{
+  	  layout = wibox.layout.fixed.horizontal,
+  	  prev_button,
+  	  play_button,
+  	  next_button,
+  	  forced_height = dpi(35),
+	},
+
+	{
+	  layout = wibox.layout.align.horizontal,
+	  random_button,
+	},
   forced_height = dpi(35),
 }
 
@@ -164,5 +187,6 @@ media_buttons.navigate_buttons = navigate_buttons
 media_buttons.play_button_image = play_button_image
 media_buttons.repeat_button_image = repeat_button_image
 media_buttons.random_button_image = random_button_image
+media_buttons.slider = music_slider
 
 return media_buttons

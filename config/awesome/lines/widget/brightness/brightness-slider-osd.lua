@@ -17,7 +17,7 @@ local slider_osd =
 slider_osd:connect_signal(
   'property::value',
   function()
-    spawn('xbacklight -set ' .. math.max(slider_osd.value, 5), false)
+    spawn('xbacklight -set ' .. math.max(slider_osd.value, 10), false)
   end
 )
 

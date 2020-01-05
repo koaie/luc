@@ -13,9 +13,6 @@ local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
 local apps = require('configuration.apps')
 
--- acpi sample outputs
--- Battery 0: Discharging, 75%, 01:51:38 remaining
--- Battery 0: Charging, 53%, 00:57:43 until charged
 
 local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/search/icons/'
@@ -39,17 +36,11 @@ widget_button:buttons(
       1,
       nil,
       function()
-		--awful.spawn('blueberry')
       awful.spawn(apps.default.rofiappmenu)
       end
     )
   )
 )
 
-
--- To use colors from beautiful theme put
--- following lines in rc.lua before require("battery"):
---beautiful.tooltip_fg = beautiful.fg_normal
---beautiful.tooltip_bg = beautiful.bg_normal
 
 return widget_button

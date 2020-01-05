@@ -7,11 +7,9 @@ local awful = require('awful')
 local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/music/icons/'
 
-local album_cover = require('widget.music.content.album-cover')
 local prog_bar = require('widget.music.content.progress-bar')
 local track_time = require('widget.music.content.track-time')
 local song_info = require('widget.music.content.song-info')
-local vol_slider = require('widget.music.content.volume-slider')
 
 local mpd_updater = {}
 
@@ -36,53 +34,6 @@ local check_repeat_mode = "mpc status | sed -n '/random/p' | cut -c23-24 | sed '
 
 -- Check random status
 local check_random_mode = " mpc status | sed -n '/random/p' | cut -c37-38 | sed 's/^[ \\t]*//'"
-
-
--- Album cover
-
-update_cover = function()
-
-	-- Extract album cover from song
-	apps.bins.coverUpdate()
-
-
-	local cmd = "if [[ -f /tmp/cover.jpg ]]; then print exists; fi"
-		awful.spawn.easy_async_with_shell(cmd, function(stdout)
-			if (stdout:match("%W")) then
-				gears.timer {
-					timeout = 1,
-					autostart = true,
-					call_now = true,
-					single_shot = true,
-					callback  = function()
-						album_cover.cover:set_image(gears.surface.load_uncached('/tmp/cover.jpg'))
-					end
-				}
-			else
-				gears.timer {
-					timeout = 1,
-					autostart = true,
-					call_now = true,
-					single_shot = true,
-					callback  = function()
-						album_cover.cover:set_image(gears.surface.load_uncached(PATH_TO_ICONS .. 'vinyl' .. '.svg'))
-					end
-				}
-			end
-			collectgarbage('collect')
-		end)
-	end
-
--- Update cover every 10 seconds
-album_updater = gears.timer {
-	timeout = 10,
-	autostart = true,
-	call_now = true,
-	callback  = function()
-	update_cover()
-	end
-}
-
 
 -- Get the progress percentage of music
 update_progress_bar = function()
@@ -120,17 +71,15 @@ update_time_duration = function()
 		end
 	end)
 end
-
-
-update_time_duration = function()
-	-- Update time duration on song change
-	awful.spawn.easy_async_with_shell(check_music_duration, function( stdout )
-		if stdout ~= nil then
-			track_time.time_duration.text = tostring(stdout)
-		else
-			track_time.time_duration.text = tostring("99:59")
-		end
-	end)
+update_artist = function()
+        -- Save the output of "mpc -f %file% current" into a variable after new lines removal
+        -- Update file
+        awful.spawn.easy_async_with_shell('mpc -f %artist% current', function( stdout )
+        -- Remove new lines
+        artist = stdout:gsub('%\n','')
+        end)
+        -- Return the variable
+        return artist
 end
 
 update_file = function()
@@ -155,52 +104,36 @@ update_title = function()
 		  if(title:len() > 1) then
 				-- Trim file to 26 characters
 				title = title:sub(1,26) .. ''
-				-- Set title
+				-- Set title and artist
 				song_info.music_title.title:set_text(title)
+				song_info.music_artist.artist:set_text(update_artist())
 			else
 				-- Define file into a variable
 				local file = update_file()
-				-- Cut the .mp3 ending
-				file = file:sub(1, title:len() - 5) .. ''
-				-- Trim file to 26 characters
-				file = file:sub(1,26) .. ''
-				-- Set title and artist
+				local titleLen = file:len()
+                                -- Cut the .mp3 ending and trim to 26 characters
+                                if (titleLen < 30) then
+                                   file = file:sub(1, titleLen - 4)
+                                   else
+                                   file = file:sub(1, 26)
+                                end
+				-- Set title and artist				
 				song_info.music_title.title:set_text(file)
+				song_info.music_artist.artist:set_text(" ")
 		  end
 		  
 		else
-			-- Set title
-			song_info.music_title.title:set_text("Play Some Music!")
+			-- Set title and artist
+			song_info.music_title.title:set_text(" ")
+			song_info.music_artist.artist:set_text(" ")
 		end
 	end)
 end
 
-update_artist = function()
-	-- Update Artist
-	awful.spawn.easy_async_with_shell('mpc -f %artist% current', function( stdout )
-		if (stdout:match("%W")) then
-      -- Remove new lines
-			song_info.music_artist.artist:set_text(stdout:gsub('%\n',''))
-		else
-			song_info.music_artist.artist:set_text("or play some porn?")
-		end
-	end)
-end
-
-
-update_volume_slider = function()
-  -- mpd volume is set to N/A if `mpc stop` or every after login
-  -- so lets call this when play button is pressed to update the value of slider
-  awful.spawn.easy_async_with_shell('mpc volume', function(stdout) 
-    -- Get the current mpd volume
-    vol_slider.vol_slider.value = tonumber(stdout:match('%d+'))
-    vol_slider.vol_slider:get_children_by_id('sliderbar')[1].value = tonumber(stdout:match('%d+'))
-  end)
-end
 
 
 update_all_content = function()
-		
+
 	-- Update progress bar
 	update_progress_bar()
 
@@ -212,12 +145,6 @@ update_all_content = function()
 
 	-- Update title
 	update_title()
-
-	-- Update artist
-	update_artist()
-
-	-- Update album
-	update_cover()
 end
 
 
@@ -229,11 +156,7 @@ end
 check_if_playing = function()
   awful.spawn.easy_async_with_shell("mpc status | awk 'NR==2' | grep -o playing", function( stdout )
     if (stdout:match("%W")) then
-      require('widget.music.content.media-buttons').play_button_image.play:set_image(gears.surface.load_uncached(PATH_TO_ICONS .. 'pause.svg'))
-
-      -- Update volume slider value
-      update_volume_slider()
-      
+      require('widget.music.content.media-buttons').play_button_image.play:set_image(gears.surface.load_uncached(PATH_TO_ICONS .. 'pause.svg'))      
     else
       require('widget.music.content.media-buttons').play_button_image.play:set_image(gears.surface.load_uncached(PATH_TO_ICONS .. 'play.svg'))
     end
@@ -264,17 +187,6 @@ check_random_status = function()
 end
 
 
-
--- Volume slider 
-vol_slider.vol_slider:connect_signal(
-  'property::value',
-  function()
-    awful.spawn('mpc volume ' .. vol_slider.vol_slider.value)
-    vol_slider.vol_slider_bar:get_children_by_id('sliderbar')[1].value  = tonumber(vol_slider.vol_slider.value)
-  end
-)
-
-
 music_play_pause = function()
 	awful.spawn('mpc toggle', false)
 	check_if_playing()
@@ -298,9 +210,9 @@ music_rand = function()
   check_random_status()
 end
 
--- Update time progress every 5 seconds
+-- Update time progress every 1 second
 local update_music_info = gears.timer {
-	timeout = 7,
+	timeout = 1.0,
 	autostart = true,
 	call_now = true,
 	callback  = function()
@@ -317,8 +229,6 @@ local update_music_info = gears.timer {
 		-- Update title
 		update_title()
 
-		-- Update artist
-		update_artist()
 
     -- Check if playing or paused
     check_if_playing()
@@ -343,5 +253,4 @@ mpd_updater.music_prev = music_prev
 mpd_updater.music_rep = music_rep
 mpd_updater.music_rand = music_rand
 mpd_updater.update_all_content = update_all_content
-
 return mpd_updater

@@ -24,7 +24,7 @@ wibox.widget {
   {
     id = 'icon',
     forced_height = dpi(70),
-    image = PATH_TO_ICONS .. 'user' .. '.svg',
+    image = PATH_TO_ICONS .. 'koala' .. '.png',
     clip_shape = gears.shape.circle,
     widget = wibox.widget.imagebox,
     resize = true
@@ -70,14 +70,14 @@ awful.spawn.easy_async_with_shell('whoami', function(out)
       if stdout:match('image_detected') then
 
         -- Check if we already have a user's profile image copied to icon folder
-        local cmd_icon_check = "if test -f " .. PATH_TO_ICONS .. 'user.jpg' .. "; then print 'exists'; fi"
+        local cmd_icon_check = "if test -f " .. PATH_TO_ICONS .. 'koala.png' .. "; then print 'exists'; fi"
           awful.spawn.easy_async_with_shell(cmd_icon_check, function(stdout)
             if stdout:match('exists') then
               -- If the file already copied, don't copy, just update the imagebox
-              profile_imagebox.icon:set_image(PATH_TO_ICONS .. 'user.jpg')
+              profile_imagebox.icon:set_image(PATH_TO_ICONS .. 'koala.png')
             else
               -- Image detected, now copy your profile picture to the widget directory icon folder
-              copy_cmd = 'cp ' .. PATH_TO_USERICON .. out .. ' ' .. PATH_TO_ICONS .. 'user.jpg'
+              copy_cmd = 'cp ' .. PATH_TO_USERICON .. out .. ' ' .. PATH_TO_ICONS .. 'koala.png'
               awful.spawn(copy_cmd)
 
               -- Add a timer to a delay
@@ -88,7 +88,7 @@ awful.spawn.easy_async_with_shell('whoami', function(out)
                 single_shot = true,
                 callback  = function()
                 -- Then set copied image as profilepic in the widget
-                profile_imagebox.icon:set_image(PATH_TO_ICONS .. 'user.jpg')
+                profile_imagebox.icon:set_image(PATH_TO_ICONS .. 'koala.png')
               end
             }
           end
@@ -97,7 +97,7 @@ awful.spawn.easy_async_with_shell('whoami', function(out)
         else
           -- r_u_ugly?
           -- if yes then use this image instead
-            profile_imagebox.icon:set_image(PATH_TO_ICONS .. 'user' .. '.svg')
+            profile_imagebox.icon:set_image(PATH_TO_ICONS .. 'koala' .. '.png')
           end
 
         end, false)
@@ -107,7 +107,7 @@ awful.spawn.easy_async_with_shell('whoami', function(out)
 
 
 -- Check distro name
-awful.spawn.easy_async_with_shell("cat /etc/os-release | awk 'NR==1'| awk -F " .. "'" .. '"' .. "'" .. " '{print $2}'", function(out)
+awful.spawn.easy_async_with_shell("cat /etc/os-release | awk 'NR==2'| awk -F " .. "'" .. '"' .. "'" .. " '{print $2}'", function(out)
   -- Remove newline represented by `\n`
   distroname = out:gsub('%\n','')
   distro_name.markup = '<span font="SFNS Display Regular 12">' .. distroname ..'</span>'
@@ -156,8 +156,6 @@ local user_profile = wibox.widget {
     margins = dpi(10),
     widget = wibox.container.margin,
   },
-  border_width = dpi(1),
-  border_color = '#ffffff40',
   bg = beautiful.modal_bg,
   shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 6) end,
   widget = wibox.container.background

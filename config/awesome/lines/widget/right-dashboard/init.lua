@@ -1,20 +1,24 @@
-local gears = require('gears')
 local awful = require('awful')
 local wibox = require('wibox')
+local gears = require('gears')
+local beautiful = require('beautiful')
 
-local dpi = require('beautiful').xresources.apply_dpi
-
-local clickable_container = require('widget.material.clickable-container')
 local HOME = os.getenv('HOME')
-local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/music/icons/'
 
--- Instantiate music box toggle function
-require('widget.music.mpd-music-updater')
+local apps = require('configuration.apps')
+local dpi = require('beautiful').xresources.apply_dpi
+local clickable_container = require('widget.material.clickable-container')
+local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/right-dashboard/icons/'
 
-local widget = wibox.widget {
+-- Load panel rules, it will create panel for each screen
+require('widget.right-dashboard.panel-rules')
+
+
+local widget =
+  wibox.widget {
   {
     id = 'icon',
-    image = PATH_TO_ICONS .. 'music' .. '.svg',
+    image = PATH_TO_ICONS .. 'notification' .. '.svg',
     widget = wibox.widget.imagebox,
     resize = true
   },
@@ -29,11 +33,10 @@ widget_button:buttons(
       1,
       nil,
       function()
-        toggle_mbox()
+        _G.screen.primary.right_panel:toggle()
       end
-      )
     )
   )
-
+)
 
 return widget_button

@@ -24,7 +24,9 @@ local gen_shape = function (position, radius)
     return function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, false, false, true, false, radius) end
   elseif position == 'bottom_left' then
     return function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, false, false, false, true, radius) end
-  else
+  elseif position == 'top' then
+    return function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, radius) end  
+else
     return function(cr, width, height) gears.shape.rounded_rect(cr, width, height, radius) end
   end
 end
@@ -34,9 +36,7 @@ end
 local widget_wrapper = function(widget_arg, pos, rad)
   return wibox.widget {
     widget_arg,
-          border_width = dpi(1),
-      border_color = '#ffffff40',
-      bg = beautiful.modal_bg,
+      bg = beautiful.bg_modal_title,
     shape = gen_shape(pos, rad),
     widget = wibox.container.background
   }
@@ -54,7 +54,7 @@ local calculator_screen = wibox.widget {
     valign = 'center',
     widget = wibox.widget.textbox,
   },
-  margins = dpi(5),
+  margins = dpi(10),
   widget = wibox.container.margin
 }
 
@@ -643,47 +643,16 @@ equals_widget_button:buttons(
 
 
 --##########
--- HEADER
---##########
-
-local calculator_header = wibox.widget {
-  wibox.widget {
-    text = 'Calculator',
-    font = 'SFNS Display 14',
-    align = 'center',
-    valign = 'center',
-    widget = wibox.widget.textbox,
-  },
-  margins = dpi(10),
-  widget = wibox.container.margin
-}
-
---##########
 -- LAYOUT
 --##########
 
 local calculator_body = wibox.widget {
   layout = wibox.layout.fixed.vertical,
-  spacing = dpi(1),
   {
-    {
-      calculator_header,
-      border_width = dpi(1),
-      border_color = '#ffffff40',
-      bg = beautiful.modal_bg,
-      shape = function(cr, width, height)
-        gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, 6) end,
-      widget = wibox.container.background,
-    },
     layout = wibox.layout.flex.horizontal,
+    widget_wrapper(calculator_screen, 'top', 6),
   },
   {
-    spacing = dpi(1),
-    layout = wibox.layout.flex.horizontal,
-    widget_wrapper(calculator_screen, 'flat', 0),
-  },
-  {
-    spacing = dpi(1),
     layout = wibox.layout.flex.horizontal,
     widget_wrapper(c_widget_button, 'flat', 0),
     widget_wrapper(exponent_widget_button, 'flat', 0),
@@ -691,7 +660,6 @@ local calculator_body = wibox.widget {
     widget_wrapper(delete_widget_button, 'flat', 0),
   },
   {
-    spacing = dpi(1),
     layout = wibox.layout.flex.horizontal,
     widget_wrapper(seven_widget_button, 'flat', 0),
     widget_wrapper(eight_widget_button, 'flat', 0),
@@ -699,7 +667,6 @@ local calculator_body = wibox.widget {
     widget_wrapper(multiplication_widget_button, 'flat', 0),
   },
   {
-    spacing = dpi(1),
     layout = wibox.layout.flex.horizontal,
     widget_wrapper(four_widget_button, 'flat', 0),
     widget_wrapper(five_widget_button, 'flat', 0),
@@ -707,7 +674,6 @@ local calculator_body = wibox.widget {
     widget_wrapper(subtraction_widget_button, 'flat', 0),
   },
   {
-    spacing = dpi(1),
     layout = wibox.layout.flex.horizontal,
     widget_wrapper(one_widget_button, 'flat', 0),
     widget_wrapper(two_widget_button, 'flat', 0),
@@ -715,11 +681,9 @@ local calculator_body = wibox.widget {
     widget_wrapper(addition_widget_button, 'flat', 0),
   },
   {
-    spacing = dpi(1),
     layout = wibox.layout.flex.horizontal,
     widget_wrapper(zero_widget_button, 'bottom_left', 6),
     {
-      spacing = dpi(1),
       layout = wibox.layout.flex.horizontal,
       widget_wrapper(decimal_widget_button, 'flat', 0),
       widget_wrapper(equals_widget_button, 'bottom_right', 6),

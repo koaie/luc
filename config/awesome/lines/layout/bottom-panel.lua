@@ -27,7 +27,7 @@ awful.tooltip(
     mode = 'outside',
     align = 'right',
     timer_function = function()
-    return os.date("The date today is %B %d, %Y. And it's fucking %A!")
+    return os.date("%A, %B %d, %Y.")
   end,
   preferred_positions = {'right', 'left', 'top', 'bottom'},
   margin_leftright = dpi(8),
@@ -37,12 +37,12 @@ awful.tooltip(
 
 
 local cal_shape = function(cr, width, height)
-  gears.shape.partially_rounded_rect( cr, width, height, true, true, false, false, beautiful.modal_radius)
+  gears.shape.partially_rounded_rect( cr, width, height, false, false, true, true, beautiful.modal_radius)
 end
 
 -- Calendar Widget
 local month_calendar = awful.widget.calendar_popup.month({
-	start_sunday = true,
+	start_sunday = false,
 	spacing = 10,
 	font = 'SFNS Display 10',
 	long_weekdays = true,
@@ -54,7 +54,7 @@ local month_calendar = awful.widget.calendar_popup.month({
 	style_focus = { border_width = 0, bg_color = '#8ab4f8'},
 })
 -- Attach calentar to clock_widget
-month_calendar:attach(clock_widget, "br" , { on_pressed = true, on_hover = false })
+month_calendar:attach(clock_widget, "tr" , { on_pressed = true, on_hover = false })
 
 -- Create to each screen
 screen.connect_signal("request::desktop_decoration", function(s)
@@ -109,21 +109,21 @@ local BotPanel = function(s, offset)
   {
     ontop = true,
     screen = s,
-    type = 'nornal',
-    position = 'bottom',
+    type = 'normal',
+    position = 'top',
     height = panel_height,
     width = s.geometry.width,
     stretch = false,
     bg = '00000000',
     struts = {
-      bottom = panel_height
+      top = panel_height
     }
   }
 
 
   panel:struts(
   {
-    bottom = panel_height
+    top = panel_height
   }
   )
 
@@ -172,8 +172,7 @@ local BotPanel = function(s, offset)
     return wibox.widget {
       wibox.widget {
         widget,
-        border_width = dpi(1),
-        border_color = '#ffffff40',
+	bg = beautiful.bg_modal_title,
         shape = function(cr, width, height)
         gears.shape.partially_rounded_rect( cr, width, height, true, true, true, true, 10) end,
         widget = wibox.container.background,
@@ -183,53 +182,31 @@ local BotPanel = function(s, offset)
     }
   end
 
-  local hSeparator = wibox.widget {
-    orientation = 'vertical',
-    forced_width = 1,
-    opacity = 0.50,
-    span_ratio = 0.7,
-    widget = wibox.widget.separator
-  }
-
   panel:setup {
     {
       expand = "none",
       layout = wibox.layout.align.horizontal,
       {
         layout = wibox.layout.fixed.horizontal,
-        decorateWidget(require('widget.search')),
-        decorateWidget(require('widget.music')),
-        decorateWidget(require('widget.mini-settings')),
-        hSeparator,
         -- Create a taglist widget
+	decorateWidget(require('widget.search')),
         decorateWidget(TagList(s)),
         decorateWidget(TaskList(s)),
         add_button,
       },
-      -- Clock
       -- clock_widget,
       nil,
       {
         layout = wibox.layout.fixed.horizontal,
-        hSeparator,
         wibox.container.margin(s.systray, dpi(0), dpi(0), dpi(10), dpi(10)),
         {
           layout = wibox.layout.fixed.horizontal,
           decorateWidget(require('widget.systemtray')),
-          decorateWidget(require('widget.package-updater')),
-          decorateWidget(require('widget.bluetooth')),
-          decorateWidget(require('widget.wifi')),
-          decorateWidget(require('widget.battery')),
         },
-        hSeparator,
-        decorateWidget(require('widget.notification-center')),
-        decorateWidget(LayoutBox(s)),
-        decorateWidget(wibox.container.margin(clock_widget, dpi(10), dpi(10))),
+        decorateWidget(require('widget.right-dashboard')),
+	decorateWidget(wibox.container.margin(clock_widget, dpi(10), dpi(10))),
       },
     },
-    -- border lines
-    border_width = dpi(1),
-    border_color = '#ffffff40',
     -- The real background color
     bg = beautiful.background.hue_900,
     -- The real, anti-aliased shape
@@ -237,7 +214,6 @@ local BotPanel = function(s, offset)
     gears.shape.partially_rounded_rect( cr, width, height, true, true, true, true, 0) end,
     widget = wibox.container.background()
   }
-
   return panel
 end
 
