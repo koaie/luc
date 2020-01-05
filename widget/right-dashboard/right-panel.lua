@@ -153,7 +153,7 @@ local right_panel = function(screen)
 							layout = wibox.layout.fixed.vertical,
 								spacing = dpi(10),
 								require('widget.user-profile'),
-							require('widget.weather'),
+          							require('widget.weather'),
 								separator,
 							-- ## Music box ## --
 							layout = wibox.layout.fixed.vertical,
