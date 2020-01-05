@@ -95,7 +95,6 @@ dont_disturb_button:buttons(
 local dont_disturb_wrapped = wibox.widget {
   {
     dont_disturb_button,
-    bg = beautiful.bg_modal, 
     shape = gears.shape.circle,
     widget = wibox.container.background
   },

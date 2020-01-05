@@ -42,7 +42,6 @@ delete_button:buttons(
 local delete_button_wrapped = wibox.widget {
   {
     delete_button,
-    bg = beautiful.bg_modal, 
     shape = gears.shape.circle,
     widget = wibox.container.background
   },
