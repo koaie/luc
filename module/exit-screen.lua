@@ -40,7 +40,7 @@ end
 
 function suspend_command()
   exit_screen_hide()
-  awful.spawn.with_shell('sleep 1 && mantablockscreen && ' .. apps.default.lock .. '	& systemctl hibernate')
+  awful.spawn.with_shell('sleep 1 && ' .. apps.default.lock .. '	& systemctl hibernate')
 end
 function exit_command()
   _G.awesome.quit()
