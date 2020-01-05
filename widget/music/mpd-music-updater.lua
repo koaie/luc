@@ -112,7 +112,7 @@ update_title = function()
 				local file = update_file()
 				local titleLen = file:len()
                                 -- Cut the .mp3 ending and trim to 26 characters
-                                if (titleLen < 31) then
+                                if (titleLen < 30) then
                                    file = file:sub(1, titleLen - 4)
                                    else
                                    file = file:sub(1, 26)
