@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>awesomedotfiles</h1>
+    <h1>Luc</h1>
     <p>Fork of  https://github.com/ilovecookieee/Glorious-Dotfiles/tree/master/config/awesome/lines</b></p>
     <p>Aims to be pretty, functional, and light weight. </p>
 </div>
