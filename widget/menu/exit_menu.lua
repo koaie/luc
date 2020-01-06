@@ -283,7 +283,7 @@ local restart_button_wrapped = wibox.widget {
     bg = beautiful.bg_modal_title,
     -- The real, anti-aliased shape
     shape = function(cr, width, height)
-     gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, 12) 
+     gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, 0) 
     end,
     widget = wibox.container.background()
   }
