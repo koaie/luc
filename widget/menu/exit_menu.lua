@@ -198,7 +198,7 @@ local restart_button_wrapped = wibox.widget {
     height = dpi(50),
     width = width,
     x = s.geometry.width - width,
-    y = dpi(30),
+    y = dpi(48),
   }
 
   menu_backdrop = wibox {
@@ -215,7 +215,6 @@ local restart_button_wrapped = wibox.widget {
 
   -- Make this non private
   toggle_menu = function()
-    -- awful.spawn('notify-send yayayayyaay')
     menu_backdrop.visible = not menu_backdrop.visible
     exit_menu.visible = not exit_menu.visible
   end
@@ -281,10 +280,10 @@ local restart_button_wrapped = wibox.widget {
       },
     },
     -- The real background color
-    bg = beautiful.background.hue_900,
+    bg = beautiful.bg_modal_title,
     -- The real, anti-aliased shape
     shape = function(cr, width, height)
-     gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, 6) 
+     gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, 12) 
     end,
     widget = wibox.container.background()
   }
