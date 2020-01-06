@@ -17,8 +17,9 @@ return wibox.widget {
     layout = wibox.layout.align.horizontal,
     {
       layout = wibox.layout.fixed.horizontal,
-      spacing = dpi(5),
       require('widget.notif-center.dont-disturb'),
+      spacing = dpi(5),
+      nil,
     },
     nil,
     { 

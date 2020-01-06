@@ -160,25 +160,72 @@ random_button:buttons(
   )
 )
 
+local play_button_wrapped = wibox.widget {
+  {
+    play_button,
+    shape = gears.shape.circle,
+    widget = wibox.container.background
+  },
+  layout = wibox.layout.fixed.horizontal
+}
+ 
+local next_button_wrapped = wibox.widget {
+  {
+    next_button,
+    shape = gears.shape.circle,
+    widget = wibox.container.background
+  },
+  layout = wibox.layout.fixed.horizontal
+}
+ 
+local prev_button_wrapped = wibox.widget {
+  {
+    prev_button,
+    shape = gears.shape.circle,
+    widget = wibox.container.background
+  },
+  layout = wibox.layout.fixed.horizontal
+}
+ 
+local repeat_button_wrapped = wibox.widget {
+  {
+    repeat_button,
+    shape = gears.shape.circle,
+    widget = wibox.container.background
+  },
+  layout = wibox.layout.fixed.horizontal
+}
+ 
+local random_button_wrapped = wibox.widget {
+  {
+    random_button,
+    shape = gears.shape.circle,
+    widget = wibox.container.background
+  },
+  layout = wibox.layout.fixed.horizontal
+}
+ 
+
+
 navigate_buttons = wibox.widget {
 	expand = 'none',
 	layout = wibox.layout.align.horizontal,
 	{
 	   layout = wibox.layout.align.horizontal,
-	   repeat_button,
+	   repeat_button_wrapped,
 	},
 
 	{
   	  layout = wibox.layout.fixed.horizontal,
-  	  prev_button,
-  	  play_button,
-  	  next_button,
+  	  prev_button_wrapped,
+  	  play_button_wrapped,
+  	  next_button_wrapped,
   	  forced_height = dpi(35),
 	},
 
 	{
 	  layout = wibox.layout.align.horizontal,
-	  random_button,
+	  random_button_wrapped,
 	},
   forced_height = dpi(35),
 }

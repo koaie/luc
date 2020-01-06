@@ -7,6 +7,9 @@ return {
     editor = 'geany',
     rofiappmenu = 'rofi -show drun -theme ' .. filesystem.get_configuration_dir() .. '/configuration/rofi/appmenu/drun.rasi',
     lock = 'mantablockscreen',
+    restart = 'systemctl reboot',
+    shutdown = 'systemctl poweroff',
+    sleep = 'sleep 1 && mantablockscreen & systemctl hibernate',
     quake = 'kitty --title QuakeTerminal'
   },
   -- List of apps to start once on start-up

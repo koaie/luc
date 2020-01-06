@@ -176,10 +176,10 @@ local right_panel = function(screen)
 					},
 					{
 						{
-						layout = wibox.layout.fixed.vertical,
-						require('widget.music.content.media-buttons').slider,
-						-- ## End of music box ## --
-						require('layout.left-panel.dashboard.quick-settings'),
+							layout = wibox.layout.fixed.vertical,
+							require('widget.music.content.media-buttons').slider,
+							-- ## End of music box ## --
+							require('layout.left-panel.dashboard.quick-settings'),
 						},
 						left = dpi(0),
 						right = dpi(0),
@@ -188,8 +188,8 @@ local right_panel = function(screen)
 					separator,
 					{
 						{
-						layout = wibox.layout.fixed.vertical,
-					    require('widget.calculator')
+							layout = wibox.layout.fixed.vertical,
+						        require('widget.calculator'),
 						},
 						left = dpi(15),
 						right = dpi(15),

@@ -40,21 +40,21 @@ end
 
 function suspend_command()
   exit_screen_hide()
-  awful.spawn.with_shell('sleep 1 && ' .. apps.default.lock .. '	& systemctl hibernate')
+  awful.spawn.with_shell(apps.default.sleep)
 end
 function exit_command()
   _G.awesome.quit()
 end
 function lock_command()
   exit_screen_hide()
-  awful.spawn.with_shell('sleep 1 && mantablockscreen && ' .. apps.default.lock)
+  awful.spawn.with_shell(apps.default.lock)
 end
 function poweroff_command()
-  awful.spawn.with_shell('systemctl poweroff')
+  awful.spawn.with_shell(apps.default.shutdown)
   awful.keygrabber.stop(_G.exit_screen_grabber)
 end
 function reboot_command()
-  awful.spawn.with_shell('systemctl reboot')
+  awful.spawn.with_shell(apps.default.restart)
   awful.keygrabber.stop(_G.exit_screen_grabber)
 end
 
@@ -63,8 +63,7 @@ poweroff:connect_signal(
   'button::release',
   function()
     poweroff_command()
-  end
-)
+  end)
 
 local reboot = buildButton(icons.restart, 'Restart')
 reboot:connect_signal(

@@ -152,6 +152,7 @@ local user_profile = wibox.widget {
           layout = wibox.layout.fixed.vertical,
         },
       },
+      require('widget.menu'),
     },
     margins = dpi(10),
     widget = wibox.container.margin,
