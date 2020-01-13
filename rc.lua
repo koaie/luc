@@ -15,7 +15,6 @@ require('module.auto-start')
 require('module.decorate-client')
 require('module.exit-screen')
 require('module.quake-terminal')
-require('module.menu')
 require('module.volume-osd')
 require('module.brightness-osd')
 -- Setup all configurations

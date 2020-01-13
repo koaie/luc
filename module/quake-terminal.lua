@@ -43,7 +43,7 @@ _G.client.connect_signal(
   function(c)
     if (c.pid == quake_id) then
       quake_client = c
-      c.opacity = 0.9
+      c.opacity = 1
       c.floating = true
       c.ontop = true
       c.above = true
@@ -56,7 +56,6 @@ _G.client.connect_signal(
       c.shape = function(cr, w, h)
         gears.shape.rectangle(cr, w, h)
       end
-    -- awful.placement.top(c)
     end
   end
 )
@@ -70,5 +69,3 @@ _G.client.connect_signal(
     end
   end
 )
-
--- create_shell()

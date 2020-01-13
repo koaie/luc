@@ -123,7 +123,6 @@ local right_panel = function(screen)
 				require('widget.right-dashboard.subwidgets.panel-mode-switcher'),
 				nil,
 			},
-			separator,
 			{
 				layout = wibox.layout.stack,
 				-- Notification Center
