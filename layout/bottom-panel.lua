@@ -109,7 +109,7 @@ local BotPanel = function(s, offset)
   {
     ontop = true,
     screen = s,
-    type = 'normal',
+    type = 'dock',
     position = 'top',
     height = panel_height,
     width = s.geometry.width,
