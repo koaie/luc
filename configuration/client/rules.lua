@@ -58,17 +58,17 @@ awful.rules.rules = {
   {
     rule_any = {
       class = {
-        "URxvt",
+        "Xfce4-terminal",
         "XTerm",
         "UXTerm",
-        "kitty",
-        "K3rmit"
+        "kitty"
        },
     },
     except_any = {
       instance = {
         -- Dont't switch to tag `1` when opening QuakeTerminal
         'QuakeTerminal',
+	'Xfce4-terminal',
       }
     },
     properties = {

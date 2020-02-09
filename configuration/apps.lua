@@ -10,7 +10,7 @@ return {
     restart = 'systemctl reboot',
     shutdown = 'systemctl poweroff',
     sleep = 'sleep 1 && mantablockscreen & systemctl hibernate',
-    quake = 'kitty --title "QuakeTerminal"'
+    quake = 'xfce4-terminal --title "QuakeTerminal"'
   },
   -- List of apps to start once on start-up
   run_on_start_up = {

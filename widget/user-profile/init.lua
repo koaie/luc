@@ -137,7 +137,6 @@ local user_profile = wibox.widget {
         widget = wibox.container.margin,
       },
       {
-        -- expand = 'none',
         layout = wibox.layout.align.vertical,
         {
           wibox.container.margin(profile_name, dpi(5)),
@@ -148,6 +147,7 @@ local user_profile = wibox.widget {
           layout = wibox.layout.fixed.vertical,
         },
         {
+	  forced_height = dpi(15),
           wibox.container.margin(uptime_time, dpi(5)),
           layout = wibox.layout.fixed.vertical,
         },
