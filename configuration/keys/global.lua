@@ -67,7 +67,7 @@ local globalKeys =
   awful.key(
   { }, "Print",
   function ()
-    awful.spawn("xfce4-screenshooter -r -i")
+    awful.spawn("flameshot gui")
   end,
   { description = "Fullscreen screenshot", group = "Miscellaneous"}),
 
