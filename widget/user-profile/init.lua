@@ -115,12 +115,16 @@ end)
 
 -- RUn once on startup or login
 awful.spawn.easy_async_with_shell("uptime -p", function(out)
-  uptime = out:gsub('%\n','')
+  uptime = out:gsub('%\n','') -- Remove newline represented by `\n`
+  uptime = uptime:match("(up.*,.*),?") -- cut anything from up until second , (if it exists)
+  uptime = uptime:sub(1,1):upper()..uptime:sub(2) -- Cap first letter
   uptime_time.markup = '<span font="SFNS Display Regular 10">' .. uptime ..'</span>'
 end)
 -- Check uptime every 600 seconds/10min
 awful.widget.watch('uptime -p', 600, function(widget, stdout)
-  uptime = stdout:gsub('%\n','')
+  uptime = out:gsub('%\n','') -- Remove newline represented by `\n`
+  uptime = uptime:match("(up.*,.*),?") -- cut anything from up until second , (if it exists)     
+  uptime = uptime:sub(1,1):upper()..uptime:sub(2) -- Cap first letter
   uptime_time.markup = '<span font="SFNS Display Regular 10">' .. uptime ..'</span>'
   collectgarbage('collect')
 end)
