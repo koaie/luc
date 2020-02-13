@@ -9,7 +9,7 @@
 + **OS**: Debian
 + **WM**: AwesomeWM
 + **Terminal Emulators**: kitty, konsole, st
-+ **Compositor**: compton-tryone
++ **Compositor**: picom-tryone
 + **File Manager**: nemo
 + **Launcher**: rofi
 + **Editor**: geany, nano
@@ -40,7 +40,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | --- | --- | --- | --- |
 | `awesome` | Window manager | yeah awesome | master brunch |
 | `rofi` | Window switcher, application launcher and dmenu replacement | Application launcher | master brunch |
-| `Compton-tryone` | A compositor for X11 | compositor with kawase-blur | master brunch |
+| `picom-tryone` | A compositor for X11 | compositor with kawase-blur | master brunch |
 | `blueman` | Manages bluetooth | For bluetooth widgets | any |
 | `xfce4-power-manager` | Manages battery/power settings | Power Settings | any |
 | `pulseaudio`, `libpulse` | Sound system | Volume widgets and keybinds | 13.0 and above |
@@ -62,9 +62,7 @@ If you notice that something is missing, please open an issue so I can add the d
   - xbacklight (adjust backlight brightness)
   - pulseaudio, alsa-utils (volume/audio keybinds)
   - mpd, mpc (music widget)
-  - xorg-xwininfo, xprop (custom titlebar)
   - xdg-menu (generates app list)
-  - jq (Formatting)
   - flameshot (screenshots)
 + Copy the files to `$HOME/.config/awesome/`
 + Reload Awesome using `Super + shift + r`
@@ -94,7 +92,7 @@ This setup is split in multiple parts:
 + Client rules?
   - `awesome/configuration/client/keys.lua`
 + Compositor?
-  -  `awesome/configuration/compton.conf`
+  -  `awesome/configuration/picom.conf`
 + Rofi?
   - `awesome/configuration/rofi/`
 + Tags?
