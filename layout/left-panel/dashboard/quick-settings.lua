@@ -8,7 +8,6 @@ local dpi = require('beautiful').xresources.apply_dpi
 local volSlider = require('widget.volume.volume-slider')
 local brightnessSlider = require('widget.brightness.brightness-slider')
 
-
 return wibox.widget {
   layout = wibox.layout.fixed.vertical,
   {

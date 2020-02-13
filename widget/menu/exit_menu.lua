@@ -194,7 +194,7 @@ local restart_button_wrapped = wibox.widget {
     bg = '#00000000',
     visible = false,
     ontop = true,
-    type = "normal",
+    type = "dock",
     height = dpi(50),
     width = width,
     x = s.geometry.width - width,
@@ -206,7 +206,7 @@ local restart_button_wrapped = wibox.widget {
     visible = false,
     screen = s,
     bg = '#00000000',
-    type = 'dock',
+    type = 'utility',
     x = s.geometry.x,
     y = s.geometry.x - dpi(36),
     width = s.geometry.width,
@@ -283,7 +283,7 @@ local restart_button_wrapped = wibox.widget {
     bg = beautiful.bg_modal_title,
     -- The real, anti-aliased shape
     shape = function(cr, width, height)
-     gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, 0) 
+    gears.shape.rounded_rect (cr, width, height, 12) 
     end,
     widget = wibox.container.background()
   }
